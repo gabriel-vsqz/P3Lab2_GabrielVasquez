@@ -107,7 +107,7 @@ void Kaprekar(int numero) {
 	cout << resultado << endl;
 
 	if(resultado != 6174) {
-		sacar_numeros(resultado);}
+		sacar_numeros(resultado);
 		Kaprekar(resultado);
 	}
 
