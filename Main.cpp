@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int opcion, a, b, c, d;
+int opcion, a, b, c, d, resultado;
 bool runtime = true;
 
 int menu() {
@@ -46,12 +46,19 @@ int* Ordenamiento(int* arreglo, int n) {
 	}
 }
 
-bool Verificar_Numero(int num) {
+void sacar_numeros(int num) {
 	a = num % 10;
+        b = (num%100)/10;
+        c = ((num%1000)/100);
+        d = ((num%10000)/1000);
+}
+
+bool Verificar_Numero(int num) {
+	/*a = num % 10;
 	b = (num%100)/10;
 	c = ((num%1000)/100);
-	d = ((num%10000)/1000);
-	
+	d = ((num%10000)/1000);*/
+	sacar_numeros(num);
 	if ( (a!=b) and (b!=c) and (c!=d) and (a!=d) and (a!=c) and (b!=d) ) {
 		return true;
 	} else {
@@ -65,7 +72,7 @@ void Imprimir_Serie(int* arreglo, int n) {
         }
 }
 
-int Kaprekar(int numero) {
+void Kaprekar(int numero) {
 	int auxiliar1, auxiliar2, n1, n2;
 	//int s1, s2, s3, s4, r1, r2, r3, r4;
 	int serie1[] = {d,c,b,a};
@@ -96,7 +103,14 @@ int Kaprekar(int numero) {
 	n1 = (serie1[0]*1000) + (serie1[1]*100) + (serie1[2]*10) + (serie1[3]*1);
 	n2 = (serie2[0]*1000) + (serie2[1]*100) + (serie2[2]*10) + (serie2[3]*1);
 
-	return n2-n1;
+	resultado = n2-n1;
+	cout << resultado << endl;
+
+	if(resultado != 6174) {
+		sacar_numeros(resultado);}
+		Kaprekar(resultado);
+	}
+
 }
 
 int main() {
@@ -127,7 +141,7 @@ int main() {
 				//Ordenamiento(arreglo, n);
 			       }break;
 			case 3:{
-				int numero, resultado, iterador;
+				int numero, resultado;
 				bool validacion = false;
 				cout << "\nEjercicio 3\n";
 				while (validacion == false || numero == 6174 || numero < 999 || numero > 9999) {
@@ -142,12 +156,7 @@ int main() {
 						cout << "Solo puede ingresar números de 4 dígitos" << endl;
 					}
 				}
-				//iterador = numero;
-				//do {
-					resultado = Kaprekar(iterador);
-					cout << resultado;
-					//iterador = resultado;
-				//} while(resultado != 6174);	
+				Kaprekar(numero);
 			       }break;
 			default:
 				cout << "Ha ingresado una opción que no está en el menú" << endl;
