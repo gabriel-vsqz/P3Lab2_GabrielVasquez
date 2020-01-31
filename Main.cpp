@@ -37,11 +37,13 @@ void Imprimir_Arreglo(int* arreglo, int n) {
 }
 
 int* Ordenamiento(int* arreglo, int n) {
-	if (n = 0) {
-		return arreglo;
-	} else {
-		for (int i = 0; i < n; i++) {
-			
+	int posicion, menor = 200;
+	for (int i = 0; i < n; i++) {
+		for(int j = posicion; j < n; j++) {
+			if (arreglo[j] < menor) {
+				menor = arreglo[j];
+				posicion = j;
+			}
 		}
 	}
 }
@@ -54,10 +56,6 @@ void sacar_numeros(int num) {
 }
 
 bool Verificar_Numero(int num) {
-	/*a = num % 10;
-	b = (num%100)/10;
-	c = ((num%1000)/100);
-	d = ((num%10000)/1000);*/
 	sacar_numeros(num);
 	if ( (a!=b) and (b!=c) and (c!=d) and (a!=d) and (a!=c) and (b!=d) ) {
 		return true;
@@ -74,7 +72,6 @@ void Imprimir_Serie(int* arreglo, int n) {
 
 void Kaprekar(int numero) {
 	int auxiliar1, auxiliar2, n1, n2;
-	//int s1, s2, s3, s4, r1, r2, r3, r4;
 	int serie1[] = {d,c,b,a};
 	int serie2[] = {d,c,b,a};
 	for (int i = 0; i < 4; i++) {
@@ -138,7 +135,7 @@ int main() {
 				cout << "Arreglo Generado:\n";
 				Imprimir_Arreglo(arreglo, n);
 				cout << "\nOrdenamiento:\n";
-				//Ordenamiento(arreglo, n);
+				Ordenamiento(arreglo, n);
 			       }break;
 			case 3:{
 				int numero, resultado;
