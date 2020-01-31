@@ -37,21 +37,24 @@ void Imprimir_Arreglo(int* arreglo, int n) {
 }
 
 int* Ordenamiento(int* arreglo, int n) {
-	int posicion, menor = 200, temporal, controlador;
+	int posicion, menor_referencia = 200, temporal, controlador = 0;
 	for (int i = 0; i < n; i++) {
+		menor_referencia = 200;
 		for(int j = controlador; j < n; j++) {
-			if (arreglo[j] < menor) {
-				menor = arreglo[j];
+			if (arreglo[j] < menor_referencia) {
+				menor_referencia = arreglo[j];
 				posicion = j;
 			}
 		}
 		temporal = arreglo[i];
-		arreglo[i] = menor;
+		arreglo[i] = menor_referencia;
 		arreglo[posicion] = temporal;
 		Imprimir_Arreglo(arreglo, n);
+		cout << "\n";
 		controlador++;
 	}
 }
+
 
 void sacar_numeros(int num) {
 	a = num % 10;
@@ -141,6 +144,7 @@ int main() {
 				Imprimir_Arreglo(arreglo, n);
 				cout << "\nOrdenamiento:\n";
 				Ordenamiento(arreglo, n);
+				cout << "\n";
 			       }break;
 			case 3:{
 				int numero, resultado;
