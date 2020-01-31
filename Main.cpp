@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int opcion;
+int opcion, a, b, c, d;
 bool runtime = true;
 
 int menu() {
@@ -13,11 +13,11 @@ int menu() {
 	return (opcion);
 }
 
-int Euclides(int a, int b) {
-	if (a % b == 0) {
-		return b;
+int Euclides(int x, int y) {
+	if (x % y == 0) {
+		return y;
 	} else {
-		return Euclides(b, a % b);
+		return Euclides(y, x % y);
 	}
 }
 
@@ -47,7 +47,6 @@ int* Ordenamiento(int* arreglo, int n) {
 }
 
 bool Verificar_Numero(int num) {
-	int a, b, c, d;
 	a = num % 10;
 	b = (num%100)/10;
 	c = ((num%1000)/100);
@@ -60,6 +59,14 @@ bool Verificar_Numero(int num) {
 	}
 }
 
+void Kaprekar(int numero) {
+	int serie[] = {d,c,b,a};
+	for (int i = 1; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+		}
+	}
+}
+
 int main() {
 	while(runtime) {
 		opcion = menu();
@@ -68,13 +75,13 @@ int main() {
 				runtime = false;
 			       }break;
 			case 1:{
-				int a, b, mcd;
+				int x, y, mcd;
 				cout << "\nEjercicio 1\nIngrese número a: ";
-				cin >> a;
+				cin >> x;
 				cout << "Ingrese número b: ";
-				cin >> b;
-				mcd = Euclides(a,b);
-				cout << "mcd("<< a << "," << b << ") = " << mcd << endl;
+				cin >> y;
+				mcd = Euclides(x,y);
+				cout << "mcd("<< x << "," << y << ") = " << mcd << endl;
 			       }break;
 			case 2:{
 				int n;
@@ -91,14 +98,19 @@ int main() {
 				int numero;
 				bool validacion = false;
 				cout << "\nEjercicio 3\n";
-				while (validacion == false) {
+				while (validacion == false || numero == 6174 || numero < 999 || numero > 9999) {
 					cout << "Ingrese un número de 4 digitos: ";
 					cin >> numero;
 					validacion = Verificar_Numero(numero);
-					if (!validacion)
+					if (!validacion) {
 						cout << "Los 4 digitos deben ser distintos" << endl;
+					} else if (numero == 6174) {
+						cout << "No puede ingresar el número 6174" << endl;
+					} else if (numero < 999 ||  numero > 9999) {
+						cout << "Solo puede ingresar números de 4 dígitos" << endl;
+					}
 				}
-				//Kaprekar();
+				Kaprekar(numero);
 			       }break;
 			default:
 				cout << "Ha ingresado una opción que no está en el menú" << endl;
