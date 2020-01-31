@@ -44,11 +44,11 @@ int* Ordenamiento(int* arreglo, int n) {
 			if (arreglo[j] < menor_referencia) {
 				menor_referencia = arreglo[j];
 				posicion = j;
+				temporal = arreglo[i];
+				arreglo[posicion] = temporal;
 			}
-		}
-		temporal = arreglo[i];
-		arreglo[i] = menor_referencia;
-		arreglo[posicion] = temporal;
+		}	
+		arreglo[i] = menor_referencia;	
 		Imprimir_Arreglo(arreglo, n);
 		cout << "\n";
 		controlador++;
