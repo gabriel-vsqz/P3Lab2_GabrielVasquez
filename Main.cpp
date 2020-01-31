@@ -37,14 +37,19 @@ void Imprimir_Arreglo(int* arreglo, int n) {
 }
 
 int* Ordenamiento(int* arreglo, int n) {
-	int posicion, menor = 200;
+	int posicion, menor = 200, temporal, controlador;
 	for (int i = 0; i < n; i++) {
-		for(int j = posicion; j < n; j++) {
+		for(int j = controlador; j < n; j++) {
 			if (arreglo[j] < menor) {
 				menor = arreglo[j];
 				posicion = j;
 			}
 		}
+		temporal = arreglo[i];
+		arreglo[i] = menor;
+		arreglo[posicion] = temporal;
+		Imprimir_Arreglo(arreglo, n);
+		controlador++;
 	}
 }
 
